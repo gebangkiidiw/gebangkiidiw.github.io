@@ -1,41 +1,79 @@
 import { AffiliateCard } from "./AffiliateCard";
 import { Button } from "@/components/ui/button";
-import { MessageCircle, Wrench } from "lucide-react";
+import { MessageCircle, Wrench, DollarSign, Gift, CreditCard, Zap, Play } from "lucide-react";
 
 const affiliateLinks = [
   {
-    title: "🏦 PINJOL MUDAH CAIR",
-    description: "Platform pinjaman online terpercaya dengan proses cepat dan bunga rendah. Approval rate tinggi dengan persyaratan mudah!",
+    id: 1,
+    title: "PINJOL MUDAH CAIR",
+    subtitle: "Aman & Terpercaya",
+    description: "Dapatkan pinjaman instan dengan bunga rendah dan proses cepat dalam 5 menit!",
+    amount: "Limit s/d 20 Juta",
     url: "https://i.adapundi.co/t87bzq8",
-    icon: "money" as const,
-    variant: "cta" as const,
-    urgent: true
+    icon: <DollarSign className="w-6 h-6" />,
+    color: "from-green-400 to-emerald-600",
+    badge: "POPULER",
+    features: ["Proses 5 Menit", "Bunga Rendah", "Tanpa Jaminan"]
   },
   {
-    title: "🎁 AKULAKU VOUCHER",
-    description: "Dapatkan voucher gratis senilai Rp150.000 untuk belanja online atau top up game favorit kamu!",
+    id: 2,
+    title: "AKULAKU VOUCHER",
+    subtitle: "Bonus Langsung Rp150.000",
+    description: "Klaim voucher gratis senilai Rp150.000 untuk belanja atau cicilan 0%!",
     amount: "Rp150.000",
     url: "https://s.akulaku.com/Vi4NE4",
-    icon: "gift" as const,
-    variant: "success" as const,
-    urgent: true
+    icon: <Gift className="w-6 h-6" />,
+    color: "from-purple-400 to-pink-600",
+    badge: "TERBATAS",
+    features: ["Gratis Voucher", "Cicilan 0%", "Cashback"]
   },
   {
-    title: "💳 NEOBANK VOUCHER", 
-    description: "Klaim voucher eksklusif senilai Rp115.000 dari NeoBank. Limited time offer, jangan sampai terlewat!",
+    id: 3,
+    title: "NEOBANK VOUCHER",
+    subtitle: "Bonus Langsung Rp115.000",
+    description: "Buka rekening digital dan dapatkan bonus langsung Rp115.000 di akun kamu!",
     amount: "Rp115.000",
     url: "https://s.bankneo.co.id/ro1h10",
-    icon: "coins" as const,
-    variant: "success" as const,
-    urgent: true
+    icon: <CreditCard className="w-6 h-6" />,
+    color: "from-blue-400 to-cyan-600",
+    badge: "TRENDING",
+    features: ["Bonus Instan", "Rekening Digital", "Tanpa Biaya Admin"]
   },
   {
-    title: "💸 DANA KAGET",
-    description: "Surprise cash setiap hari! Raih kesempatan mendapat dana kaget dengan nominal fantastis. Buruan klaim sebelum kehabisan!",
+    id: 4,
+    title: "DANA KAGET",
+    subtitle: "Hadiah Mendadak Untukmu",
+    description: "Kejutan dana mendadak bisa datang kapan saja! Buruan klaim sebelum kehabisan!",
+    amount: "Hadiah Misterius",
     url: "#",
-    icon: "trending" as const,
-    variant: "neon" as const,
-    urgent: true
+    icon: <Zap className="w-6 h-6" />,
+    color: "from-orange-400 to-red-600",
+    badge: "SEGERA",
+    features: ["Hadiah Acak", "Claim Harian", "Bonus Surprise"]
+  },
+  {
+    id: 5,
+    title: "TELEGRAM CHANNEL",
+    subtitle: "Join Komunitas Cuan",
+    description: "Bergabung dengan ribuan member yang sudah merasakan cuan dari tips terbaru!",
+    amount: "10K+ Members",
+    url: "https://t.me/gebangkiidiw",
+    icon: <MessageCircle className="w-6 h-6" />,
+    color: "from-indigo-400 to-purple-600",
+    badge: "KOMUNITAS",
+    features: ["Tips Cuan", "Update Harian", "Diskusi Gratis"]
+  },
+  {
+    id: 6,
+    title: "LOOPSTREAM TOOLS",
+    subtitle: "Live Streaming 24/7",
+    description: "Aplikasi live streaming otomatis tanpa RDP. Hasilkan cuan dari konten kamu!",
+    amount: "Streaming Otomatis",
+    url: "https://lynk.id/gebangkiidiw",
+    icon: <Play className="w-6 h-6" />,
+    color: "from-teal-400 to-green-600",
+    badge: "TOOLS",
+    features: ["24/7 Streaming", "Tanpa RDP", "Auto Pilot"]
   }
 ];
 
@@ -57,17 +95,20 @@ export const AffiliateLinkSection = () => {
         </div>
         
         {/* Affiliate Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-          {affiliateLinks.map((link, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          {affiliateLinks.map((link) => (
             <AffiliateCard
-              key={index}
+              key={link.id}
+              id={link.id}
               title={link.title}
+              subtitle={link.subtitle}
               description={link.description}
               amount={link.amount}
               url={link.url}
               icon={link.icon}
-              variant={link.variant}
-              urgent={link.urgent}
+              color={link.color}
+              badge={link.badge}
+              features={link.features}
             />
           ))}
         </div>
