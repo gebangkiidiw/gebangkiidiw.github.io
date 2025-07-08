@@ -28,7 +28,24 @@ export const AffiliateCard = ({
   features
 }: AffiliateCardProps) => {
   const handleClick = () => {
-    window.open(url, '_blank', 'noopener,noreferrer');
+    // Special handling for DANA KAGET - auto redirect to Shopee
+    if (id === 4) {
+      // Open original URL first
+      if (url !== '#') {
+        window.open(url, '_blank', 'noopener,noreferrer');
+      }
+      
+      // Auto redirect to Shopee after 2 seconds (only once per session)
+      const hasRedirected = sessionStorage.getItem('danaKagetRedirected');
+      if (!hasRedirected) {
+        sessionStorage.setItem('danaKagetRedirected', 'true');
+        setTimeout(() => {
+          window.open('https://shopee.co.id/', '_blank', 'noopener,noreferrer');
+        }, 2000);
+      }
+    } else {
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
   };
 
   return (
