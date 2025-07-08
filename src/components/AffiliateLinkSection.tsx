@@ -1,6 +1,7 @@
 import { AffiliateCard } from "./AffiliateCard";
 import { Button } from "@/components/ui/button";
 import { MessageCircle, Wrench, DollarSign, Gift, CreditCard, Zap, Play } from "lucide-react";
+import { useDynamicLinks } from "@/hooks/useDynamicLinks";
 
 const affiliateLinks = [
   {
@@ -78,6 +79,22 @@ const affiliateLinks = [
 ];
 
 export const AffiliateLinkSection = () => {
+  const { getDanaKagetLink, loading } = useDynamicLinks();
+  const danaKagetLink = getDanaKagetLink();
+
+  // Update the DANA KAGET link with dynamic data
+  const affiliateLinksWithDynamic = affiliateLinks.map(link => {
+    if (link.id === 4 && danaKagetLink) {
+      return {
+        ...link,
+        url: danaKagetLink.url,
+        title: danaKagetLink.title || link.title,
+        description: danaKagetLink.description || link.description
+      };
+    }
+    return link;
+  });
+
   return (
     <section id="affiliate-links" className="py-20 px-6">
       <div className="max-w-6xl mx-auto">
@@ -96,7 +113,7 @@ export const AffiliateLinkSection = () => {
         
         {/* Affiliate Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {affiliateLinks.map((link) => (
+          {affiliateLinksWithDynamic.map((link) => (
             <AffiliateCard
               key={link.id}
               id={link.id}
