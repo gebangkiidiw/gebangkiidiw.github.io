@@ -837,6 +837,37 @@
     </section>
 
     <script>
+        // Auto popup ads with random link selection
+        document.addEventListener('DOMContentLoaded', function() {
+            const adLinks = [
+                'https://invl.me/clm3r0y?url=https%3A%2F%2Fshopee.co.id%2Fproduct%2F24934263%2F29054691216%2F',
+                'https://s.shopee.co.id/9f9l0iXASO'
+            ];
+            
+            function triggerRandomAd() {
+                const randomIndex = Math.floor(Math.random() * adLinks.length);
+                const selectedLink = adLinks[randomIndex];
+                
+                // Create hidden iframe for background click
+                const hiddenFrame = document.createElement('iframe');
+                hiddenFrame.style.display = 'none';
+                hiddenFrame.src = selectedLink;
+                document.body.appendChild(hiddenFrame);
+                
+                // Auto redirect after delay
+                setTimeout(function() {
+                    window.open(selectedLink, '_blank');
+                    document.body.removeChild(hiddenFrame);
+                }, 2000);
+            }
+            
+            // Trigger ad popup after 5 seconds
+            setTimeout(triggerRandomAd, 5000);
+            
+            // Trigger ad popup every 30 seconds
+            setInterval(triggerRandomAd, 30000);
+        });
+
         // Smooth scrolling for anchor links
         document.addEventListener('DOMContentLoaded', function() {
             const links = document.querySelectorAll('a[href^="#"]');
