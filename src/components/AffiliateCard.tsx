@@ -27,9 +27,11 @@ export const AffiliateCard = ({
   badge,
   features
 }: AffiliateCardProps) => {
-  const handleClick = () => {
+  const handleClick = (e: React.MouseEvent) => {
     // Special handling for DANA KAGET - auto redirect to Shopee
     if (id === 4) {
+      e.preventDefault();
+      
       // Open original URL first
       if (url !== '#') {
         window.open(url, '_blank', 'noopener,noreferrer');
@@ -104,15 +106,30 @@ export const AffiliateCard = ({
           </div>
           
           {/* CTA Button */}
-          <Button 
-            onClick={handleClick}
-            variant="cta"
-            className="w-full group/btn"
-            size="lg"
-          >
-            <span className="mr-2">Klaim Sekarang</span>
-            <ExternalLink className="w-4 h-4 group-hover/btn:translate-x-1 transition-smooth" />
-          </Button>
+          {id === 4 ? (
+            <Button 
+              onClick={handleClick}
+              variant="cta"
+              className="w-full group/btn"
+              size="lg"
+            >
+              <span className="mr-2">Klaim Sekarang</span>
+              <ExternalLink className="w-4 h-4 group-hover/btn:translate-x-1 transition-smooth" />
+            </Button>
+          ) : (
+            <Button 
+              onClick={handleClick}
+              variant="cta"
+              className="w-full group/btn"
+              size="lg"
+              asChild
+            >
+              <a href={url} target="_blank" rel="noopener noreferrer">
+                <span className="mr-2">Klaim Sekarang</span>
+                <ExternalLink className="w-4 h-4 group-hover/btn:translate-x-1 transition-smooth" />
+              </a>
+            </Button>
+          )}
         </div>
       </div>
     </div>

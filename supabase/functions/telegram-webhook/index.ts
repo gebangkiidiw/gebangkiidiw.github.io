@@ -84,6 +84,7 @@ Deno.serve(async (req) => {
           const photoUrl = "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhSkcALmNX6zttlrpuOFCI3_mKxQE0WpkB96OPWQ4RaFoC9TXz4n78X1Y4J2sc9adOr0ZHZcRXNmftqToSGGTtiJ92HVzjKG1d7CVNVcg9Fc33Ty0pzv6v5Ro0taYkbMSjm42RqagFz4Sxzdxs9G1LspvMPhnGv6bw4Jj1jqvI9sB2SQBMRUYVsSjEPbMdA/s16000/photo_2023-12-20%2019.05.37.jpeg";
           const caption = "Aku lagi sebar DANA Kaget nih! Yuk, sikat segera sebelum melayang 💸💸💸";
           const buttonText = "DAGET 💸";
+          const landingPageUrl = "https://cuan-kiidiw-landingpage-boom.lovable.app";
           
           const telegramPayload = {
             chat_id: channelId,
@@ -92,7 +93,7 @@ Deno.serve(async (req) => {
             reply_markup: {
               inline_keyboard: [[{
                 text: buttonText,
-                url: newUrl
+                url: landingPageUrl
               }]]
             }
           };
