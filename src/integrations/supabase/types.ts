@@ -47,6 +47,33 @@ export type Database = {
         }
         Relationships: []
       }
+      user_submissions: {
+        Row: {
+          created_at: string
+          dana_number: string
+          email: string | null
+          full_name: string
+          id: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          dana_number: string
+          email?: string | null
+          full_name: string
+          id?: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          dana_number?: string
+          email?: string | null
+          full_name?: string
+          id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
