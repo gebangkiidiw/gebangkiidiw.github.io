@@ -14,6 +14,7 @@ interface FormData {
 }
 
 export const UserDataForm = () => {
+  console.log("UserDataForm is rendering!");
   const [formData, setFormData] = useState<FormData>({
     fullName: "",
     danaNumber: "",
